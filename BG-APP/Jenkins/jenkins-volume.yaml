@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jenkins-pv
+  namespace: jenkins
+spec:
+  storageClassName: jenkins-pv
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 20Gi
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    path: /jenkins_pv
+    server: 192.168.15.26
+    readOnly: false

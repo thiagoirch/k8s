@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-dom-bg 
+  #annotations:
+    #acme.cert-manager.io/http01-edit-in-place: "true"
+    #nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: blue.thiagoirch.com
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: nginxblue
+            port:
+              number: 80
+  - host: green.thiagoirch.com
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: nginxgreen
+            port:
+              number: 80

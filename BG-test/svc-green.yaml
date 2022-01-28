@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: nginxgreen
+  name: nginxgreen
+  namespace: default
+spec:
+  ports:
+  - nodePort: 32081
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    run: nginxgreen
+  sessionAffinity: None
+  type: NodePort

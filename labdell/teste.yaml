@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    annotations:
+    generation: 1
+    labels:
+        run: httpd
+        app: apache
+    name: meu-apache
+    namespace: default
+spec:
+    progressDeadlineSeconds: 600
+    replicas: 2
+    revisionHistoryLimit: 10
+    selector:
+        matchLabels:
+            run: httpd
+            dc: Lab
+    strategy:
+        rollingUpdate:
+            maxSurge: 25%
+            maxUnavailable: 25%
+        type: RollingUpdate
+    template:
+        metadata:
+            labels:
+                run: httpd
+                dc: Lab
+        spec:
+            containers:
+            - image: thiagoirch/httpd
+              imagePullPolicy: Always
+              name: httpd
+              ports:
+              - containerPort: 80
+                protocol: TCP
+              resources:
+                limits:
+                  memory: 512Mi
+                  cpu: "500m"
+                requests:
+                  memory: 256Mi
+                  cpu: "250m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: httpd
+  name: httpd
+  namespace: default
+spec:
+  ports:
+  - nodePort: 32222
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    run: httpd
+  sessionAffinity: None
+  type: NodePort

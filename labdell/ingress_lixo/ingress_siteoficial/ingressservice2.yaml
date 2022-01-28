@@ -1,0 +1,39 @@
+[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;42r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[42;1H"ingressservice.yaml" 36L, 915C[1;1H[1m[96mapiVersion[m[38;5;224m:[m v1
+[1m[96mkind[m[38;5;224m:[m Service
+[1m[96mmetadata[m[38;5;224m:[m
+  [1m[96mannotations[m[38;5;224m:[m
+    [1m[96mmeta.helm.sh/release-name[m[38;5;224m:[m ingress-nginx
+    [1m[96mmeta.helm.sh/release-namespace[m[38;5;224m:[m ingress-nginx
+  [1m[96mlabels[m[38;5;224m:[m
+    [1m[96mapp.kubernetes.io/component[m[38;5;224m:[m controller
+    [1m[96mapp.kubernetes.io/instance[m[38;5;224m:[m ingress-nginx
+    [1m[96mapp.kubernetes.io/managed-by[m[38;5;224m:[m Helm
+    [1m[96mapp.kubernetes.io/name[m[38;5;224m:[m ingress-nginx
+    [1m[96mapp.kubernetes.io/version[m[38;5;224m:[m 1.0.1
+    [1m[96mhelm.sh/chart[m[38;5;224m:[m ingress-nginx-4.0.2
+  [1m[96mname[m[38;5;224m:[m ingress-nginx-controller
+  [1m[96mnamespace[m[38;5;224m:[m ingress-nginx
+[1m[96mspec[m[38;5;224m:[m
+  [1m[96mports[m[38;5;224m:[m
+  [93m- [m[1m[96mappProtocol[m[38;5;224m:[m http
+    [1m[96mname[m[38;5;224m:[m http
+    [1m[96mnodePort[m[38;5;224m:[m [95m32080[m
+    [1m[96mport[m[38;5;224m:[m [95m80[m
+    [1m[96mprotocol[m[38;5;224m:[m TCP
+    [1m[96mtargetPort[m[38;5;224m:[m http
+  [93m- [m[1m[96mappProtocol[m[38;5;224m:[m https
+    [1m[96mname[m[38;5;224m:[m https
+    [1m[96mnodePort[m[38;5;224m:[m [95m32443[m
+    [1m[96mport[m[38;5;224m:[m [95m443[m
+    [1m[96mprotocol[m[38;5;224m:[m TCP
+    [1m[96mtargetPort[m[38;5;224m:[m https
+  [1m[96mselector[m[38;5;224m:[m
+    [1m[96mapp.kubernetes.io/component[m[38;5;224m:[m controller
+    [1m[96mapp.kubernetes.io/instance[m[38;5;224m:[m ingress-nginx
+    [1m[96mapp.kubernetes.io/name[m[38;5;224m:[m ingress-nginx
+    [1m[96mapp[m[38;5;224m:[m nginx-ingress-lb
+  [1m[96msessionAffinity[m[38;5;224m:[m None
+  [1m[96mtype[m[38;5;224m:[m NodePort
+[94m~                                                                                                                                                                                              [38;1H~                                                                                                                                                                                              [39;1H~                                                                                                                                                                                              [40;1H~                                                                                                                                                                                              [41;1H~                                                                                                                                                                                              [m[42;174H34,25[8CTudo[34;25H[?25h[?25l[42;1HType  :qa  and press <Enter> to exit Vim[42;174H[K[42;174H34,25[8CTudo[34;25H[?25h[?25l[42;164H^M[34;25H[42;164H  [35;3H[42;175H5,3 [35;3H[?25h[?25l[42;164H^M[35;3H[42;164H  [36;3H[42;175H6[36;3H[?25h[?25l[42;164H^M[36;3H[42;164H  [36;3H[?25h[?25l[42;164H^M[36;3H[42;164H  [36;3H[?25h[?25l[42;164H:[36;3H[42;1H[K[42;1H:[?2004h[?25h[?2004l[?1l>[>4;m[?1049l[23;0;0tVim: Caught deadly signal HUP
+Vim: Finished.
+[42;1H[23;2t[23;1t

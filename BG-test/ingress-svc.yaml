@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: ingress
+    meta.helm.sh/release-namespace: nginx-ingress
+  creationTimestamp: "2021-10-25T14:36:20Z"
+  labels:
+    app.kubernetes.io/instance: ingress
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: ingress-nginx-ingress
+    helm.sh/chart: nginx-ingress-0.11.2
+  name: ingress-nginx-ingress
+  namespace: nginx-ingress
+  resourceVersion: "226677"
+  uid: 366ee753-0669-4c7c-a9fc-9fa2dbf49bc1
+spec:
+  allocateLoadBalancerNodePorts: true
+  externalTrafficPolicy: Local
+  healthCheckNodePort: 30860
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    nodePort: 32280
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  - name: https
+    nodePort: 32443
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  selector:
+    app: ingress-nginx-ingress
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}

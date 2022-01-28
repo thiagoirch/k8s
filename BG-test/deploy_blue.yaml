@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    annotations:
+    generation: 1
+    labels:
+        run: nginxblue
+        app: nginxblue
+    name: nginxblue
+    namespace: default
+spec:
+    progressDeadlineSeconds: 600
+    replicas: 2
+    revisionHistoryLimit: 10
+    selector:
+        matchLabels:
+            run: nginxblue
+    strategy:
+        rollingUpdate:
+            maxSurge: 25%
+            maxUnavailable: 25%
+        type: RollingUpdate
+    template:
+        metadata:
+            labels:
+                run: nginxblue
+        spec:
+            containers:
+            - image: thiagoirch/nginxblue:1
+              imagePullPolicy: Always
+              name: nginxblue
+              ports:
+              - containerPort: 80
+                protocol: TCP
+            dnsPolicy: ClusterFirst
+            schedulerName: default-scheduler
+            securityContext: {}
+            terminationGracePeriodSeconds: 30

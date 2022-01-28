@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-bg
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "thiagoirch.com"
+    http:
+      paths:
+      - path: "/blue"
+        pathType: Prefix
+        backend:
+          service:
+            name: "nginxblue"
+            port:
+              number: 80
+      - path: "/green"
+        pathType: Prefix
+        backend:
+          service:
+            name: "nginxgreen"
+            port:
+              number: 80    

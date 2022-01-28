@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  name: ingress-myservicea
+spec:
+  rules:
+  - host: thiagoirch.com
+    http:
+      paths:
+      - path: "/app"
+        pathType: Prefix
+        backend:
+          service:
+            name: httpd
+            port: 
+              number: 32222
+  ingressClassName: nginx

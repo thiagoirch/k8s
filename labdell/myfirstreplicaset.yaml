@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replica-test
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        system: meu-apache
+    spec:
+      containers:
+            - image: thiagoirch/httpd
+              imagePullPolicy: Always
+              name: httpd
+              ports:
+              - containerPort: 80
+                protocol: TCP

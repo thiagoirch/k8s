@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    annotations:
+    generation: 1
+    labels:
+        run: nginxgreen
+        app: nginxgreen
+    name: nginxgreen
+    namespace: default
+spec:
+    progressDeadlineSeconds: 600
+    replicas: 2
+    revisionHistoryLimit: 10
+    selector:
+        matchLabels:
+            run: nginxgreen
+    strategy:
+        rollingUpdate:
+            maxSurge: 25%
+            maxUnavailable: 25%
+        type: RollingUpdate
+    template:
+        metadata:
+            labels:
+                run: nginxgreen
+        spec:
+            containers:
+            - image: thiagoirch/nginxgreen:1
+              imagePullPolicy: Always
+              name: nginxgreen
+              ports:
+              - containerPort: 80
+                protocol: TCP
+            dnsPolicy: ClusterFirst
+            schedulerName: default-scheduler
+            securityContext: {}
+            terminationGracePeriodSeconds: 30

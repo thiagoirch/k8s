@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemonset-um
+spec:
+  template:
+    metadata:
+      labels:
+        system: meu-apache
+    spec:
+      containers:
+            - image: thiagoirch/httpd
+              imagePullPolicy: Always
+              name: httpd
+              ports:
+              - containerPort: 80
+                protocol: TCP
